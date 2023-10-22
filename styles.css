@@ -1,0 +1,16 @@
+.keys {
+    font-size: xx-large;
+    color: black;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.font-xxlarge {
+    font-size: xx-large;
+}
+
+.active {
+    color: red;
+}

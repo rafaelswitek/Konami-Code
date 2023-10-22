@@ -1,30 +1,40 @@
-$(document).ready(function () {
-    let teclas = { //Teclas que fazem parte do Konami Code.
-        37: 'esquerda',
-        38: 'cima',
-        39: 'direita',
-        40: 'baixo',
-        65: 'a',
-        66: 'b'
-    }
-    let konamiCode = ['cima', 'cima', 'baixo', 'baixo', 'esquerda', 'direita', 'esquerda', 'direita', 'b', 'a'] //ordem das teclas.
-    let posicao = 0 //posição inicial.
+document.addEventListener('DOMContentLoaded', function () {
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
+    let posicao = 0
 
-    $(document).keydown(function (e) {
-        let tecla = teclas[e.keyCode] //captura a tecla pressionada.
-        let teclaNecessaria = konamiCode[posicao] //seta a tecla que deve ser pressionada.
-        if (tecla == teclaNecessaria) { //Compara se a tecla pressionada é a tecla correta.
-            posicao++ //Incremeta a posição.
-            if (posicao == konamiCode.length) { //Compara se a posição é igual ao tamanho do array.
-                ativado() //Chama a função definida ao codigo ser digitado corretamente.
-                posicao = 0 //Apos chamar a função volta a posição inicial.
+    document.addEventListener('keydown', function (e) {
+        const teclaNecessaria = konamiCode[posicao]
+
+        if (e.key == teclaNecessaria) {
+            colorPressedKey(posicao)
+            posicao++
+
+            if (posicao === konamiCode.length) {
+                setTimeout(function () {
+                    alert('Konami Code ativado.')
+                    posicao = 0
+                    resetColors()
+                }, 100)
             }
         } else {
-            posicao = 0 //Se não for, volta a posição inicial.
+            posicao = 0
+            resetColors()
         }
     })
 
-    function ativado() { //Função chamada quando as teclas forem pressionadas na ordem correta.
-        alert('Konami Code ativado.')
+    function colorPressedKey(posicao) {
+        const elements = document.querySelectorAll(`.keys`)
+
+        if (elements && elements[posicao]) {
+            elements[posicao].classList.add('active')
+        }
+    }
+
+    function resetColors() {
+        const elements = document.querySelectorAll('.keys')
+
+        elements.forEach((element) => {
+            element.classList.remove('active')
+        })
     }
 })
