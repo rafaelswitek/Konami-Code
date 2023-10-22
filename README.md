@@ -6,7 +6,7 @@ Código que captura as teclas digitadas referente o Konami Code
 | :placard: Vitrine.Dev ||
 | --------------------- | ------------------------------------------------ |
 | :sparkles: Nome       | **Konami Code** |
-| :label: Tecnologias   | JavaScript |
+| :label: Tecnologias   | JavaScript, HTML, CSS |
 | :rocket: URL          ||
 
 ## Detalhes do projeto
